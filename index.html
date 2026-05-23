@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanishq | Portfolio</title>
+<title>Tanishq | Graphics</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -82,7 +82,7 @@ nav a:hover { opacity: 1; }
 /* 1. Hero Section */
 .hero-content { text-align: center; }
 .hero-title {
-  font-size: clamp(4rem, 10vw, 8rem); line-height: 0.9; margin-bottom: 20px; font-weight: 400;
+  font-size: clamp(2.5rem, 12vw, 8rem); line-height: 0.9; margin-bottom: 20px; font-weight: 400;
 }
 .hero-subtitle {
   font-size: clamp(0.9rem, 2vw, 1.2rem); letter-spacing: 5px; text-transform: uppercase;
@@ -295,6 +295,24 @@ footer { text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.5; let
 
 /* Global links */
 a { cursor: none; }
+
+/* Mobile & Touch Layout Fixes */
+@media (pointer: coarse) {
+  #cursor-glow, #cursor-dot { display: none !important; }
+  body, a, button, input, textarea, .pill, .contact-btn, .yt-item, .reel-item, .dock-icon, .btn-submit { cursor: auto !important; }
+}
+
+@media (max-width: 700px) {
+  nav { gap: 10px; padding: 15px 5px; flex-wrap: wrap; width: 100%; box-sizing: border-box; }
+  nav a { font-size: 0.7rem; letter-spacing: 0.5px; }
+  .stat-number { font-size: 2.5rem; }
+  .reel-item { max-width: 320px; margin: 0 auto; width: 100%; }
+  .mac-dock { flex-wrap: wrap; padding: 15px; justify-content: center; max-width: 100%; }
+  .dock-icon { width: 45px; height: 45px; }
+  .hero-contact { gap: 15px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 15px; padding: 25px 15px; }
+  .container { padding: 0 20px; }
+}
 </style>
 </head>
 <body>
@@ -307,7 +325,7 @@ a { cursor: none; }
   <a href="#">Home</a>
   <a href="#about">About</a>
   <a href="#videography">Videos</a>
-  <a href="#portfolio">Portfolio</a>
+  <a href="#portfolio">Graphics</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -319,7 +337,7 @@ a { cursor: none; }
       <div class="hero-text-col" style="min-width: 0;">
         <h1 class="hero-title">
           <span style="font-style: italic;">Tanishq's</span><br>
-          PORTFOLIO
+          GRAPHICS
         </h1>
         <div class="hero-subtitle">VIDEO EDITOR | GRAPHIC DESIGNER</div>
         <div class="hero-contact" style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -517,7 +535,7 @@ a { cursor: none; }
   </div>
 </section>
 
-<footer>© 2026 Tanishq Portfolio. Crafted with elegance.</footer>
+<footer>© 2026 Tanishq Graphics. Crafted with elegance.</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
