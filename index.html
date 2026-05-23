@@ -20,6 +20,30 @@ body {
 
 h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
+/* Film Strip Borders on Widescreens */
+@media (min-width: 1400px) {
+  body::before, body::after {
+    content: ''; position: fixed; top: 0; bottom: 0; width: 60px; z-index: -1;
+    background-color: rgba(26, 8, 11, 0.5); backdrop-filter: blur(5px);
+    border-left: 2px solid rgba(235, 213, 201, 0.05);
+    border-right: 2px solid rgba(235, 213, 201, 0.05);
+    /* Create the sprocket holes */
+    background-image: 
+      linear-gradient(rgba(235, 213, 201, 0.05) 50%, transparent 50%),
+      linear-gradient(rgba(235, 213, 201, 0.05) 50%, transparent 50%);
+    background-position: left 5px top 0, right 5px top 0;
+    background-size: 8px 30px, 8px 30px;
+    background-repeat: repeat-y;
+    animation: scrollFilm 15s linear infinite;
+  }
+  body::before { left: 5%; }
+  body::after { right: 5%; }
+}
+@keyframes scrollFilm {
+  0% { background-position: left 5px top 0, right 5px top 0; }
+  100% { background-position: left 5px top -300px, right 5px top -300px; }
+}
+
 /* Grid Layouts */
 @media (max-width: 900px) {
   .hero-top-row { grid-template-columns: 1fr !important; text-align: center; }
