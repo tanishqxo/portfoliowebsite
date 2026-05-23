@@ -68,12 +68,12 @@ section { padding: 100px 0; min-height: auto; display: flex; flex-direction: col
 nav {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
   padding: 30px 0;
-  display: flex; justify-content: center; gap: 40px;
+  display: flex; justify-content: center; gap: 60px;
   background: linear-gradient(to bottom, rgba(43, 14, 18, 0.9) 0%, transparent 100%);
   backdrop-filter: blur(10px);
 }
 nav a {
-  color: #ebd5c9; text-decoration: none; font-size: 0.85rem; letter-spacing: 2px;
+  color: #ebd5c9; text-decoration: none; font-size: 1.1rem; letter-spacing: 3px; font-weight: 500;
   text-transform: uppercase; opacity: 0.7; transition: opacity 0.3s, cursor 0.3s;
   cursor: none;
 }
@@ -337,7 +337,7 @@ a { cursor: none; }
       <div class="hero-text-col" style="min-width: 0;">
         <h1 class="hero-title">
           <span style="font-style: italic;">Tanishq's</span><br>
-          GRAPHICS
+          PORTFOLIO
         </h1>
         <div class="hero-subtitle">VIDEO EDITOR | GRAPHIC DESIGNER</div>
         <div class="hero-contact" style="display: flex; gap: 15px; flex-wrap: wrap;">
@@ -354,7 +354,16 @@ a { cursor: none; }
 
       <!-- Option A: Floating Hero Reel Card -->
       <div class="floating-hero-reel" style="position: relative;">
-        <iframe src="https://player.vimeo.com/video/1195006463?background=1&autoplay=1&loop=1&muted=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="hero-reel-video" src="https://player.vimeo.com/video/1195006463?background=1&autoplay=1&loop=1&muted=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        
+        <!-- Custom Controls Overlay -->
+        <div class="reel-overlay-controls">
+          <div class="reel-title">Show Reel</div>
+          <div class="reel-btns">
+            <button id="reel-play-btn">⏸</button>
+            <button id="reel-mute-btn">🔇</button>
+          </div>
+        </div>
       </div>
     </div>
 </section>
@@ -539,6 +548,7 @@ a { cursor: none; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
@@ -625,7 +635,38 @@ a { cursor: none; }
     });
   });
 
-  // Removed custom controls as Hero Reel is now a Vimeo embed
+  // Hero Reel Custom Controls (Vimeo API)
+  const heroReelVideo = document.getElementById('hero-reel-video');
+  const reelPlayBtn = document.getElementById('reel-play-btn');
+  const reelMuteBtn = document.getElementById('reel-mute-btn');
+
+  if(heroReelVideo && reelPlayBtn && reelMuteBtn && window.Vimeo) {
+    const player = new Vimeo.Player(heroReelVideo);
+    
+    reelPlayBtn.addEventListener('click', () => {
+      player.getPaused().then((paused) => {
+        if(paused) {
+          player.play();
+          reelPlayBtn.innerHTML = '⏸';
+        } else {
+          player.pause();
+          reelPlayBtn.innerHTML = '▶';
+        }
+      });
+    });
+
+    reelMuteBtn.addEventListener('click', () => {
+      player.getVolume().then((volume) => {
+        if(volume === 0) {
+          player.setVolume(1);
+          reelMuteBtn.innerHTML = '🔊';
+        } else {
+          player.setVolume(0);
+          reelMuteBtn.innerHTML = '🔇';
+        }
+      });
+    });
+  }
 
 </script>
 </body>
