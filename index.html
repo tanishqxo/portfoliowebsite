@@ -348,8 +348,10 @@ a { cursor: none; }
 }
 
 @media (max-width: 700px) {
-  nav { gap: 10px; padding: 15px 5px; flex-wrap: wrap; width: 100%; box-sizing: border-box; }
-  nav a { font-size: 0.7rem; letter-spacing: 0.5px; }
+  nav { padding: 15px 5px; }
+  nav > div { flex-direction: column; gap: 15px !important; }
+  nav > div > div:first-child { gap: 15px !important; flex-wrap: wrap; justify-content: center; }
+  nav a { font-size: 0.75rem; letter-spacing: 0.5px; }
   .stat-number { font-size: 2.5rem; }
   .reel-item { max-width: 320px; margin: 0 auto; width: 100%; }
   .mac-dock { flex-wrap: wrap; padding: 15px; justify-content: center; max-width: 100%; }
@@ -444,8 +446,8 @@ a { cursor: none; }
           <h2 class="section-heading" style="text-align: left; margin-bottom: 30px;">
             Behind the<br><span style="font-style:italic;">Visuals</span>
           </h2>
-          <p>I’m Tanishq, a video editor and visual designer crafting cinematic, polished content for brands that want to stand out.</p>
-          <p>With a focus on storytelling, pacing, and visual clarity, I turn client footage into engaging edits that feel premium and audience-ready.</p>
+          <p>I'm Tanishq, a luxury-focused video editor and visual designer crafting cinematic, authentic content that creates inspiring and relatable brand partnerships.</p>
+          <p>Using natural light, thoughtful composition, and premium pacing, I highlight each project's unique appeal to connect effortlessly with their audience.</p>
           <p style="margin-top: 30px; font-size: 1.3rem; font-family: 'Playfair Display', serif; font-style: italic; color: #fff;">"I don't just edit videos. I build audience retention."</p>
           <p style="margin-top: 15px; font-family: 'Playfair Display', serif; opacity: 0.6; font-size: 1.2rem;">— Tanishq</p>
         </div>
